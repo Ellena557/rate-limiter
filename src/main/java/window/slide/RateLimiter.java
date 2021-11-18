@@ -3,5 +3,5 @@ package window.slide;
 public interface RateLimiter {
     boolean isHandled(Request request);
 
-    void handle();
+    void handle(Request request);
 }

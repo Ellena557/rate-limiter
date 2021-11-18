@@ -7,7 +7,7 @@ public class ThreadSafeSlidingWindowRateLimiter implements RateLimiter {
     }
 
     @Override
-    public void handle() {
+    public void handle(Request request) {
 
     }
 }

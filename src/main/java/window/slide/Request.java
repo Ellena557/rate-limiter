@@ -2,21 +2,18 @@ package window.slide;
 
 public class Request {
     private final String key;
-    private boolean status;
+    private final Long creationTimestamp;
 
-    public Request(String key) {
+    public Request(String key, long creationTimestamp) {
         this.key = key;
+        this.creationTimestamp = creationTimestamp;
     }
 
     public String getKey() {
         return key;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    public Long getCreationTimestamp() {
+        return creationTimestamp;
     }
 }
