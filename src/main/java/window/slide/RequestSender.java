@@ -3,26 +3,25 @@ package window.slide;
 import java.util.Random;
 
 public class RequestSender {
-    private final SlidingWindowRateLimiter slidingWindowRateLimiter;
+    private final RateLimiter rateLimiter;
 
-    public RequestSender(SlidingWindowRateLimiter slidingWindowRateLimiter) {
-        this.slidingWindowRateLimiter = slidingWindowRateLimiter;
+    public RequestSender(RateLimiter rateLimiter) {
+        this.rateLimiter = rateLimiter;
     }
 
     public void sendOneRequest() {
         Request request = new Request(generateKey(), System.nanoTime());
-        slidingWindowRateLimiter.isHandled(request);
+        rateLimiter.isHandled(request);
     }
 
     public void sendRequests(int numRequests, int waitBound) {
         for (int i = 0; i < numRequests; i++) {
             System.out.println("Send request number " + i);
             Request request = new Request(generateKey(), System.nanoTime());
-            slidingWindowRateLimiter.isHandled(request);
+            rateLimiter.isHandled(request);
             try {
                 Random random = new Random();
-                System.out.println(random.nextInt(waitBound) * 1_000);
-                Thread.sleep(random.nextInt(waitBound) * 1_000);
+                Thread.sleep(random.nextInt(100));
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

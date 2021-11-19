@@ -32,7 +32,8 @@ public class SlidingWindowRateLimiter implements RateLimiter {
             return false;
         }
 
-        handle(request);
+        servedRequests.add(request);
+
         return true;
     }
 
@@ -47,27 +48,22 @@ public class SlidingWindowRateLimiter implements RateLimiter {
         int numRequests = 0;
 
         // collect old requests (that are out of the window), we will delete them to free space
-        ArrayList<Request> oldRequsts = new ArrayList<>();
+        ArrayList<Request> oldRequests = new ArrayList<>();
         for (Request currentRequest : servedRequests) {
             if (currentRequest.getCreationTimestamp() > windowStart) {
                 numRequests += 1;
             } else {
-                oldRequsts.add(currentRequest);
+                oldRequests.add(currentRequest);
             }
         }
 
         // delete old requests
-        servedRequests.removeAll(oldRequsts);
+        servedRequests.removeAll(oldRequests);
 
         return numRequests;
     }
 
     @Override
-    public void handle(Request request) {
-        servedRequests.add(request);
-        System.out.println("Request served " + request.getKey());
-    }
-
     public LinkedList<Request> getServedRequests() {
         return servedRequests;
     }

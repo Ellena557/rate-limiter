@@ -1,7 +1,9 @@
 package window.slide;
 
+import java.util.Collection;
+
 public interface RateLimiter {
     boolean isHandled(Request request);
 
-    void handle(Request request);
+    Collection getServedRequests();
 }
