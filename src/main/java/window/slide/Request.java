@@ -9,6 +9,11 @@ public class Request {
         this.creationTimestamp = creationTimestamp;
     }
 
+    public Request(String key) {
+        this.key = key;
+        this.creationTimestamp = System.nanoTime();
+    }
+
     public String getKey() {
         return key;
     }

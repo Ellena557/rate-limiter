@@ -29,7 +29,7 @@ public class ThreadSafeSlidingWindowRateLimiter implements RateLimiter {
 
         lock.lock();
         try {
-            requestNumber.set(getRequestNumber(windowStart));
+            requestNumber.set(countRequestNumber(windowStart));
             if (requestNumber.get() >= windowCapacity) {
                 return false;
             }
@@ -40,8 +40,7 @@ public class ThreadSafeSlidingWindowRateLimiter implements RateLimiter {
         }
     }
 
-    private int getRequestNumber(long windowStart) {
-
+    private int countRequestNumber(long windowStart) {
         int numRequests = 0;
         for (Request currentRequest : servedRequests) {
             if (currentRequest.getCreationTimestamp() > windowStart) {
