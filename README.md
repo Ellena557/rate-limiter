@@ -5,3 +5,5 @@
 * Описание работы алгоритма: files/description.md
 * Доказательство корректности алгоритма: files/proof.md
 * Описание архитектуры для распределенного Rate Limiter: files/distributed-architecture.md
+
+@@include[my-file.md](files/description.md)
