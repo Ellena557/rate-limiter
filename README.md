@@ -1,12 +1,8 @@
-paradoxProperties in Compile ++= Map(
-  "include.files.base_dir" -> s"${(sourceDirectory in Test).value}/paradox"
-)
-
 # Rate limiter (Sliding Window)
 
-* Реализация в директории src/main/java/window/slide
-* Тесты в директории src/test/java/window/slide
-* Описание работы алгоритма: [description.md]($files$/description.md)
-* Доказательство корректности алгоритма: files/proof.md
-* Описание архитектуры для распределенного Rate Limiter: files/distributed-architecture.md
+* Реализация: [src/main/java/window/slide](src/main/java/window/slide)
+* Тесты: [src/test/java/window/slide](src/test/java/window/slide)
+* Описание работы алгоритма: [description.md](files/description.md)
+* Доказательство корректности алгоритма: [proof.md](files/proof.md)
+* Описание архитектуры для распределенного Rate Limiter: [distributed-architecture.md](files/distributed-architecture.md)
 
