@@ -6,3 +6,4 @@
 * Доказательство корректности алгоритма: [proof.md](files/proof.md)
 * Описание архитектуры для распределенного Rate Limiter: [distributed-architecture.md](files/distributed-architecture.md)
 
+Выполняли: Горская Елена, Моисеева Анастасия, Проценко Никита.
